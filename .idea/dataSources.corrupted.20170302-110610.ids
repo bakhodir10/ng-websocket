@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="PostgreSQL - conference@localhost" uuid="f5d2d9eb-a06d-4856-9b9d-e711fb0fdce0">
+    <database-info product="PostgreSQL" version="9.5.4" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="POSTGRES" format-version="2.6">
+      <database id="1" name="conference">
+        <object-id>18069</object-id>
+        <visible>1</visible>
+      </database>
+      <database id="2" name="postgres">
+        <object-id>12413</object-id>
+      </database>
+      <database id="3" name="ijro4">
+        <object-id>17543</object-id>
+      </database>
+      <database id="4" name="chat">
+        <object-id>28552</object-id>
+      </database>
+      <database id="5" name="xsud">
+        <object-id>28704</object-id>
+      </database>
+      <database id="6" name="app">
+        <object-id>31157</object-id>
+      </database>
+      <schema id="7" parent="1" name="public">
+        <object-id>2200</object-id>
+        <visible>1</visible>
+        <introspection-state-number>3091</introspection-state-number>
+        <introspection-timestamp>2016-10-03.23:23:55.673</introspection-timestamp>
+      </schema>
+      <schema id="8" parent="1" name="pg_catalog">
+        <object-id>11</object-id>
+      </schema>
+      <schema id="9" parent="1" name="pg_toast">
+        <object-id>99</object-id>
+      </schema>
+      <schema id="10" parent="1" name="pg_temp_1">
+        <object-id>11816</object-id>
+      </schema>
+      <schema id="11" parent="1" name="pg_toast_temp_1">
+        <object-id>11817</object-id>
+      </schema>
+      <schema id="12" parent="1" name="information_schema">
+        <object-id>12121</object-id>
+      </schema>
+      <sequence id="13" parent="7" name="messages_id_seq">
+        <object-id>30527</object-id>
+        <state-number>2776</state-number>
+      </sequence>
+      <sequence id="14" parent="7" name="users_id_seq">
+        <object-id>28513</object-id>
+        <state-number>2124</state-number>
+      </sequence>
+      <table id="15" parent="7" name="messages">
+        <object-id>30529</object-id>
+        <state-number>2789</state-number>
+      </table>
+      <table id="16" parent="7" name="users">
+        <object-id>28515</object-id>
+        <state-number>3091</state-number>
+      </table>
+      <column id="17" parent="15" name="id">
+        <state-number>2776</state-number>
+        <mandatory>1</mandatory>
+        <data-type>bigint|0</data-type>
+        <default-expression>nextval(&apos;messages_id_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="18" parent="15" name="text">
+        <state-number>2776</state-number>
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="19" parent="15" name="receiver_id">
+        <state-number>2776</state-number>
+        <data-type>bigint|0</data-type>
+      </column>
+      <column id="20" parent="15" name="sender_id">
+        <state-number>2776</state-number>
+        <data-type>bigint|0</data-type>
+      </column>
+      <column id="21" parent="15" name="seen">
+        <state-number>2779</state-number>
+        <data-type>boolean|0</data-type>
+      </column>
+      <column id="22" parent="15" name="sent_time">
+        <state-number>2780</state-number>
+        <data-type>timestamp|0</data-type>
+      </column>
+      <column id="23" parent="15" name="received_time">
+        <state-number>2789</state-number>
+        <data-type>timestamp|0</data-type>
+      </column>
+      <index id="24" parent="15" name="messages_pkey">
+        <object-id>30533</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="25" parent="15" name="messages_pkey">
+        <object-id>30534</object-id>
+        <columns>id</columns>
+        <underlying-index>messages_pkey</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="26" parent="15" name="fkt05r0b6n0iis8u7dfna4xdh73">
+        <object-id>30535</object-id>
+        <columns>receiver_id</columns>
+        <ref-key>~.users.users_pkey</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="27" parent="15" name="fk4ui4nnwntodh6wjvck53dbk9m">
+        <object-id>30540</object-id>
+        <columns>sender_id</columns>
+        <ref-key>~.users.users_pkey</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="28" parent="16" name="id">
+        <state-number>2124</state-number>
+        <mandatory>1</mandatory>
+        <data-type>bigint|0</data-type>
+        <default-expression>nextval(&apos;users_id_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="29" parent="16" name="password">
+        <state-number>2124</state-number>
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="30" parent="16" name="username">
+        <state-number>2124</state-number>
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="31" parent="16" name="full_name">
+        <state-number>2801</state-number>
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <index id="32" parent="16" name="users_pkey">
+        <object-id>28522</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="33" parent="16" name="users_pkey">
+        <object-id>28523</object-id>
+        <columns>id</columns>
+        <underlying-index>users_pkey</underlying-index>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>

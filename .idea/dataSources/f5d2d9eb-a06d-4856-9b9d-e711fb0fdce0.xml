@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="PostgreSQL - conference@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.0">
+    <root id="1"/>
+    <database id="2" parent="1" name="conference">
+      <ObjectId>18069</ObjectId>
+      <Visible>1</Visible>
+    </database>
+    <database id="3" parent="1" name="postgres">
+      <ObjectId>12413</ObjectId>
+    </database>
+    <database id="4" parent="1" name="ijro4">
+      <ObjectId>17543</ObjectId>
+    </database>
+    <database id="5" parent="1" name="chat">
+      <ObjectId>28552</ObjectId>
+    </database>
+    <database id="6" parent="1" name="xsud">
+      <ObjectId>28704</ObjectId>
+    </database>
+    <database id="7" parent="1" name="app">
+      <ObjectId>31157</ObjectId>
+    </database>
+    <schema id="8" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2016-10-03.23:23:55.673</IntrospectionTimestamp>
+      <IntrospectionStateNumber>3091</IntrospectionStateNumber>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="9" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="10" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="11" parent="2" name="pg_temp_1">
+      <ObjectId>11816</ObjectId>
+    </schema>
+    <schema id="12" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11817</ObjectId>
+    </schema>
+    <schema id="13" parent="2" name="information_schema">
+      <ObjectId>12121</ObjectId>
+    </schema>
+    <sequence id="14" parent="8" name="messages_id_seq">
+      <ObjectId>30527</ObjectId>
+      <StateNumber>2776</StateNumber>
+    </sequence>
+    <sequence id="15" parent="8" name="users_id_seq">
+      <ObjectId>28513</ObjectId>
+      <StateNumber>2124</StateNumber>
+    </sequence>
+    <table id="16" parent="8" name="messages">
+      <ObjectId>30529</ObjectId>
+      <StateNumber>2789</StateNumber>
+    </table>
+    <table id="17" parent="8" name="users">
+      <ObjectId>28515</ObjectId>
+      <StateNumber>3091</StateNumber>
+    </table>
+    <column id="18" parent="16" name="id">
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>2776</StateNumber>
+      <DefaultExpression>nextval(&apos;messages_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="19" parent="16" name="text">
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>2776</StateNumber>
+    </column>
+    <column id="20" parent="16" name="receiver_id">
+      <DataType>bigint|0</DataType>
+      <StateNumber>2776</StateNumber>
+    </column>
+    <column id="21" parent="16" name="sender_id">
+      <DataType>bigint|0</DataType>
+      <StateNumber>2776</StateNumber>
+    </column>
+    <column id="22" parent="16" name="seen">
+      <DataType>boolean|0</DataType>
+      <StateNumber>2779</StateNumber>
+    </column>
+    <column id="23" parent="16" name="sent_time">
+      <DataType>timestamp|0</DataType>
+      <StateNumber>2780</StateNumber>
+    </column>
+    <column id="24" parent="16" name="received_time">
+      <DataType>timestamp|0</DataType>
+      <StateNumber>2789</StateNumber>
+    </column>
+    <index id="25" parent="16" name="messages_pkey">
+      <ObjectId>30533</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="26" parent="16" name="messages_pkey">
+      <ObjectId>30534</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>messages_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="27" parent="16" name="fkt05r0b6n0iis8u7dfna4xdh73">
+      <ObjectId>30535</ObjectId>
+      <ColNames>receiver_id</ColNames>
+      <RefTableName>users</RefTableName>
+      <RefKeyName>users_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="28" parent="16" name="fk4ui4nnwntodh6wjvck53dbk9m">
+      <ObjectId>30540</ObjectId>
+      <ColNames>sender_id</ColNames>
+      <RefTableName>users</RefTableName>
+      <RefKeyName>users_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="29" parent="17" name="id">
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>2124</StateNumber>
+      <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="30" parent="17" name="password">
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>2124</StateNumber>
+    </column>
+    <column id="31" parent="17" name="username">
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>2124</StateNumber>
+    </column>
+    <column id="32" parent="17" name="full_name">
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>2801</StateNumber>
+    </column>
+    <index id="33" parent="17" name="users_pkey">
+      <ObjectId>28522</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="34" parent="17" name="users_pkey">
+      <ObjectId>28523</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

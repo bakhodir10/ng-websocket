@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Private Chat</title>
+    <script src="/js/sockjs-0.3.4.min.js"></script>
+    <script src="/js/stomp.min.js"></script>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/app/config.js"></script>
+    <script src="/js/app/appCtrl.js"></script>
+    <script src="/js/app/users/userService.js"></script>
+    <script src="/js/app/messages/messageService.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+</head>
+<body ng-controller="appCtrl">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="btn-panel btn-panel-conversation">
+                <a class="btn  col-lg-6 send-message-btn " role="button"><i class="fa fa-search"></i> Search</a>
+                <a class="btn  col-lg-6  send-message-btn pull-right" role="button"><i class="fa fa-plus"></i>
+                    New Message</a>
+            </div>
+        </div>
+
+        <div class="col-lg-offset-1 col-lg-7">
+            <div class="btn-panel btn-panel-msg">
+
+                <a href="" class="btn  col-lg-3  send-message-btn pull-right" role="button"><i class="fa fa-gears"></i>
+                    Settings</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="conversation-wrap col-lg-3">
+            <div ng-repeat="user in users">
+                <div class="userForm" style="cursor: pointer" ng-click="findAllMessage(user)">
+                    <div class="media conversation" ui-sref-active="test">
+                        <a class="pull-left" href="#">
+                            <img class="media-object" data-src="holder.js/64x64" alt="64x64"
+                                 style="width: 50px; height: 50px;"
+                                 src="images/user.png">
+                        </a>
+
+                        <div class="media-body">
+                            <h5 class="media-heading" ng-bind="user.fullName"></h5>
+                            <small>Hello</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="message-wrap col-lg-8">
+            <div style="overflow-y: scroll;height: 470px">
+                <div ng-repeat="message in messages">
+                    <div class="msg-wrap">
+                        <div class="media msg">
+                            <a class="pull-left" href="#">
+                                <img class="media-object" data-src="holder.js/64x64" alt="64x64"
+                                     style="width: 32px; height: 32px;"
+                                     src="images/user.png">
+                            </a>
+                            <div class="media-body">
+                                <small class="pull-right time"><i class="fa fa-clock-o"></i> {{message.sentTime |
+                                    date:'medium'}}
+                                </small>
+                                <h5 class="media-heading">{{message.receiver.fullName}}</h5>
+                                <small class="col-lg-10">
+                                    {{message.text}}
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="send-wrap">
+
+                <textarea class="form-control send-message" id="message" rows="3"
+                          placeholder="Write a reply..."></textarea>
+            </div>
+            <div class="btn-panel">
+                <button ng-click="sendMessage()" class="btn btn-success col-lg-3 btn">Send Message</button>
+
+                <a href="" class="col-lg-4 text-right btn send-message-btn pull-right" role="button">
+                    <i class="fa fa-cloud-upload"></i>
+                    Add Files</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
