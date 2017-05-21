@@ -29,7 +29,7 @@ public class MessageServiceImpl extends BaseServiceImpl<Message> implements Mess
 
     @Override
     @Transactional
-    public Message save(IncomingMessage incomingMessage, Principal principal) {
+    public Message create(IncomingMessage incomingMessage, Principal principal) {
         User sender = userRepository.findByUsername(principal.getName());
         User receiver = userRepository.findOne(incomingMessage.getReceiverId());
         Message message = Message.builder().sender(sender).receiver(receiver).seen(Boolean.FALSE).
