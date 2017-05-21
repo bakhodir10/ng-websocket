@@ -29,6 +29,7 @@ app.controller('appCtrl', function ($scope, userService, messageService) {
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/aaa', function (response) {
             console.log(response);
+            alert(response);
         });
 
         stompClient.subscribe("/user/queue/private", function (response) {
@@ -40,7 +41,7 @@ app.controller('appCtrl', function ($scope, userService, messageService) {
 
     $scope.sendMessage = function () {
         var message = document.getElementById('message').value;
-        stompClient.send("/app/message", {}, JSON.stringify({'text': message, 'receiverId': 1}));
+        stompClient.send("/app/message", {}, JSON.stringify({'text': message, 'receiverId': 2}));
     };
 
 });

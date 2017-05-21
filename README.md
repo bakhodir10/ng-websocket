@@ -1,1 +1,1 @@
-# simple-chat-websocket
+# angular 1 websocket application
