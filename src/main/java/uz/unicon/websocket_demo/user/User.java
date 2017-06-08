@@ -22,6 +22,8 @@ public class User extends BaseEntity implements UserDetails {
     private String username;
     @Column(name = "password")
     private String password;
+    @Column(name = "number")
+    private Long number;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
