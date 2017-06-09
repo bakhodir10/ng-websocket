@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.security.Principal;
+
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
 
@@ -38,5 +40,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public User findOne(Long id) {
         return userRepository.findOne(id);
+    }
+
+    @Override
+    public User makeFriend(Long telNumber, Principal principal) {
+        User user = userRepository.findByNumber(telNumber);
+        User current = userRepository.findByUsername(principal.getName());
+        return null;
     }
 }

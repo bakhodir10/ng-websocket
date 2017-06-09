@@ -1,14 +1,15 @@
 app.controller('appCtrl', function ($scope, userService, $uibModal, messageService, authService) {
 
     $scope.visible = false;
-    $scope.users = {};
-    $scope.messages = {};
+    $scope.users = [];
+    $scope.messages = [];
     $scope.activeUser = null;
     $scope.selected = false;
 
     $scope.getCurrentUser = function () {
-        authService.getCurrentUser().then(function (res) {
-            console.log(res);
+        authService.getCurrentUser().then(function (response) {
+            $scope.currentUserId = response.id;
+            console.log(response)
         })
     };
 
@@ -21,6 +22,7 @@ app.controller('appCtrl', function ($scope, userService, $uibModal, messageServi
     };
 
     $scope.findAllMessage = function (id) {
+        this.messages = [];
         window.localStorage.setItem("receiverId", id);
         $scope.activeId = id;
         $scope.selected = true;
@@ -48,9 +50,9 @@ app.controller('appCtrl', function ($scope, userService, $uibModal, messageServi
             alert(response);
         });
 
-        stompClient.subscribe("/user/queue/private", function (response) {
-            // $scope.messages.push(response.body);
-            alert(response.body);
+        stompClient.subscribe("/user/queue/private", function (message) {
+            // alert(message.body);
+            $scope.messages.push(JSON.parse(message.body));
         })
     });
 
@@ -62,10 +64,10 @@ app.controller('appCtrl', function ($scope, userService, $uibModal, messageServi
 
 
     $scope.add = function () {
-        $uibModal.open({
-            animation: true,
-            templateUrl: '/js/app/users/add/user.add.component.html',
-            controller: 'userAddCtrl'
-        });
+        // $uibModal.open({
+        //     animation: true,
+        //     templateUrl: '/js/app/users/add/user.add.component.html',
+        //     controller: 'userAddCtrl'
+        // });
     }
 });

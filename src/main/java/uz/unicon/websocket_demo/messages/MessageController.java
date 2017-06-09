@@ -33,6 +33,6 @@ public class MessageController {
     @MessageMapping(value = "/message")
     public void create(IncomingMessage incomingMessage, Principal principal) {
         Message message = messageService.create(incomingMessage, principal);
-        simpMessagingTemplate.convertAndSend("/user/" + message.getReceiver().getUsername() + "/queue/private", incomingMessage.getText());
+        simpMessagingTemplate.convertAndSend("/user/" + message.getReceiver().getUsername() + "/queue/private", message);
     }
 }

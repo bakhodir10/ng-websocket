@@ -3,6 +3,7 @@ package uz.unicon.websocket_demo.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,7 +26,12 @@ public class UserController {
     }
 
     @GetMapping(value = "/current")
-    public User current(Principal principal){
+    public User current(Principal principal) {
         return userService.findByUserName(principal.getName());
+    }
+
+    @PutMapping(value = "/make")
+    public User makeFriend() {
+        return null;
     }
 }

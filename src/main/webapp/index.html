@@ -37,7 +37,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="conversation-wrap col-lg-3" style="max-height: 580px">
+        <div class="conversation-wrap col-lg-3" style="max-height: 580px; margin-top: 5px;">
             <div ng-show="visible==true" class="form-group" style="margin-top: 5px; margin-bottom: 10px">
                 <div class="inner-addon right-addon">
                     <i class="glyphicon glyphicon-search"></i>
@@ -69,10 +69,11 @@
                             </span>
 
                             <div class="media-body">
-                                <small class="pull-right time"><i class="fa fa-clock-o"></i> {{message.sentTime |
-                                    date:'medium'}}
+                                <small class="pull-right time"><i class="fa fa-clock-o"></i> {{message.sentTime | date:'medium'}}
                                 </small>
-                                <h5 class="media-heading">{{message.receiver.username}}</h5>
+                                <h5 class="media-heading">
+                                    {{message.sender.fullName}}
+                                </h5>
                                 <small class="col-lg-10">{{message.text}}</small>
                             </div>
                         </div>

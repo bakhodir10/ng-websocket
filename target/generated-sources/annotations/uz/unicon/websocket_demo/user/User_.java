@@ -8,6 +8,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(User.class)
 public abstract class User_ extends uz.unicon.websocket_demo.base.BaseEntity_ {
 
+	public static volatile SingularAttribute<User, Long> number;
 	public static volatile SingularAttribute<User, String> password;
 	public static volatile SingularAttribute<User, String> fullName;
 	public static volatile SingularAttribute<User, String> username;
